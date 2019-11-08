@@ -2,6 +2,8 @@
 
 namespace application\core;
 
+use application\core\View;
+
 class Router 
 {
     protected $routes = [];
@@ -24,7 +26,6 @@ class Router
     public function match() 
     {
         $url = trim($_SERVER['REQUEST_URI'], '/');
-        //debug($url);
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 $this->params = $params;
@@ -44,14 +45,17 @@ class Router
                     $controller = new $path($this->params);
                     $controller->$action();
                 } else {
-                    echo 'Action not found: ' . $action;
+                    View::errorCode(404);
+                    //echo 'Action not found: ' . $action;
                 }
             } else {
-                echo 'Controller not found: ' . $path;
+                View::errorCode(404);
+                //echo 'Controller not found: ' . $path;
             }
             
         } else {
-            echo 'Маршрут не найден';
+            View::errorCode(404);
+            //echo 'Маршрут не найден';
         }
     }
     
