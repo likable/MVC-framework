@@ -2,11 +2,16 @@
 
 namespace application\models;
 
-class Main 
+use application\core\Model;
+
+class Main extends Model
 {
-    public function __construct()
+    
+    public function getNews()
+    
     {
-        echo 'Модель работает';
+        $result = $this->db->getRows("SELECT title, description FROM news;");
+        return $result;
     }
     
 }
