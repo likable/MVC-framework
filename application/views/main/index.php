@@ -1,4 +1,9 @@
-<p>Главная страница</p>
+<h1>Главная страница</h1>
 
-<p>Имя: <?= $name; ?></p>
-<p>Возраст: <?= $age; ?></p>
+<?php foreach($news as $val) : ?>
+
+    <h3><?= $val['title']; ?></h3>
+    <p><?= $val['description']; ?></p>
+    <hr>
+
+<?php endforeach; ?>
