@@ -1,10 +1,9 @@
 <?php
 
-//user role and avaliable pages for account controller
+//user role and avaliable pages for main controller
 return [
     'all' => [
-        'login',
-        'register'
+        //
     ],
     'authorize' => [
         //
